@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription Plans</title>
+<link rel="stylesheet" href="index.css">
+<style>
+/* ===== PLANS PAGE SPECIFIC ===== */
+.plans-page {
+  min-height: 100vh;
+  padding: 60px 40px;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.plan-card {
+  background: #0a0a0a;
+  border: 2px solid #00eaff;
+  border-radius: 20px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 45px rgba(0, 234, 255, 0.6);
+}
+
+/* Highlight yearly as featured */
+.plan-card.featured {
+  border-color: #ff0033;
+  box-shadow: 0 0 25px rgba(255, 0, 51, 0.4);
+  position: relative;
+}
+
+.plan-card.featured:hover {
+  box-shadow: 0 0 45px rgba(255, 0, 51, 0.7);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff0033;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 18px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px #ff0033;
+  white-space: nowrap;
+}
+
+.plan-card h3 {
+  font-size: 24px;
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+.plan-card.featured h3 {
+  color: #ff0033;
+  text-shadow: 0 0 10px #ff0033;
+}
+
+.plan-price {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.plan-price span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-card ul li {
+  color: #ccc;
+  font-size: 15px;
+  padding-left: 4px;
+}
+
+.plan-card ul li::before {
+  content: "✔";
+  color: #00eaff;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.plan-card.featured ul li::before {
+  color: #ff0033;
+}
+
+.plan-card .btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* ===== POPUP ===== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-box {
+  background: #0a0a0a;
+  border: 2px solid #00eaff;
+  border-radius: 24px;
+  padding: 40px 36px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,234,255,0.5), 0 0 80px rgba(0,234,255,0.2);
+  position: relative;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 26px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.popup-close:hover { color: #ff0033; }
+
+.popup-icon { font-size: 48px; margin-bottom: 12px; }
+
+.popup-box h2 {
+  color: #00eaff;
+  font-size: 22px;
+  text-shadow: 0 0 10px #00eaff;
+  margin-bottom: 8px;
+}
+
+.popup-plan-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.popup-price {
+  font-size: 30px;
+  font-weight: 800;
+  color: #ff0033;
+  text-shadow: 0 0 12px #ff0033;
+  margin: 10px 0 20px;
+}
+
+.popup-desc {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.popup-buttons .btn { min-width: 140px; }
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 14px;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 20px rgba(0,234,255,0.6);
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .plans-page { padding: 40px 16px; }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .plan-card { padding: 28px 20px; }
+  .plan-price { font-size: 28px; }
+
+  .popup-buttons { flex-direction: column; align-items: center; }
+  .popup-buttons .btn { width: 100%; }
+  .toast { bottom: 16px; right: 16px; left: 16px; text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== POPUP ===== -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose">&times;</button>
+    <div class="popup-icon">🎮</div>
+    <h2>Confirm Subscription</h2>
+    <p class="popup-plan-name" id="popupPlan"></p>
+    <p class="popup-price" id="popupPrice"></p>
+    <p class="popup-desc">You're about to subscribe to this plan. You can cancel anytime from your account settings.</p>
+    <div class="popup-buttons">
+      <button class="btn primary" id="popupConfirm">Confirm</button>
+      <button class="btn" id="popupCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast">✅ Subscribed! Welcome to AK Games.</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="plans-page">
+  <h2 class="neon">Choose Your Plan</h2>
+
+  <div class="plans-grid">
+
+    <!-- MONTHLY -->
+    <div class="plan-card">
+      <h3>Monthly Plan</h3>
+      <div class="plan-price">₹299 <span>/ month</span></div>
+      <ul>
+        <li>Access to all games</li>
+        <li>Monthly updates</li>
+        <li>Standard downloads</li>
+        <li>Community access</li>
+      </ul>
+      <button class="btn buy-plan-btn" data-plan="Monthly Plan" data-price="₹299 / month">Buy Monthly</button>
+    </div>
+
+    <!-- YEARLY -->
+    <div class="plan-card featured">
+      <span class="featured-badge">BEST VALUE — SAVE 40%</span>
+      <h3>Yearly Plan</h3>
+      <div class="plan-price">₹2,999 <span>/ year</span></div>
+      <ul>
+        <li>Access to all games</li>
+        <li>Early access to new releases</li>
+        <li>Faster downloads</li>
+        <li>Exclusive rewards</li>
+        <li>Priority support</li>
+      </ul>
+      <button class="btn primary buy-plan-btn" data-plan="Yearly Plan" data-price="₹2,999 / year">Buy Yearly</button>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+</section>
+
+<script>
+(function () {
+  const overlay     = document.getElementById('popupOverlay');
+  const popupPlan   = document.getElementById('popupPlan');
+  const popupPrice  = document.getElementById('popupPrice');
+  const popupClose  = document.getElementById('popupClose');
+  const popupCancel = document.getElementById('popupCancel');
+  const popupConfirm= document.getElementById('popupConfirm');
+  const toast       = document.getElementById('toast');
+
+  function openPopup(plan, price) {
+    popupPlan.textContent  = plan;
+    popupPrice.textContent = price;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showToast() {
+    toast.classList.add('show');
+    setTimeout(function () { toast.classList.remove('show'); }, 3500);
+  }
+
+  document.querySelectorAll('.buy-plan-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openPopup(this.dataset.plan, this.dataset.price);
+    });
+  });
+
+  popupClose.addEventListener('click', closePopup);
+  popupCancel.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closePopup();
+  });
+
+  popupConfirm.addEventListener('click', function () {
+    closePopup();
+    showToast();
+  });
+})();
+</script>
+
+</body>
+</html>

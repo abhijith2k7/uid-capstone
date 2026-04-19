@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Favourites</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<h2 class="neon center">Your Favourites</h2>
+
+<div id="favContainer" class="cards"></div>
+
+<a href="index.html" class="more-btn">← Back to Home</a>
+
+<script>
+let favs = JSON.parse(localStorage.getItem("favourites")) || [];
+
+let container = document.getElementById("favContainer");
+
+if(favs.length === 0){
+  container.innerHTML = "<p style='text-align:center;color:#aaa;'>No favourites yet</p>";
+}
+
+favs.forEach(game => {
+  container.innerHTML += `
+    <a href="${game.page}" class="card">
+      <img src="${game.image}">
+      <span>${game.name}</span>
+    </a>
+  `;
+});
+</script>
+
+</body>
+</html>

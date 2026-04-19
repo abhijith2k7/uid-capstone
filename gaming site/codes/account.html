@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AK Games - My Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #000;
+      border-bottom: 1px solid #0ff;
+    }
+
+    .left-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: 2px solid #00eaff;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 25px;
+      outline: none;
+      width: 180px;
+      box-shadow: 0 0 10px rgba(0,234,255,0.6);
+      transition: width 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-box input::placeholder { color: #aaa; }
+    .search-box input:focus {
+      width: 240px;
+      box-shadow: 0 0 20px rgba(0,234,255,1);
+    }
+
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .right-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 14px;
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 15px;
+    }
+
+    .right-nav a:hover { color: #00eaff; }
+
+    .right-nav a.active-nav { color: #00eaff; }
+
+    .right-nav a .material-symbols-outlined {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-label { display: inline; }
+
+    /* ===== ACCOUNT PAGE ===== */
+    .account-page {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 20px;
+    }
+
+    .account-wrapper {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ===== PAGE TITLE ===== */
+    .account-title {
+      text-align: center;
+      font-size: 42px;
+      color: #00eaff;
+      text-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #00eaff,
+        0 0 50px rgba(0,234,255,0.6);
+      letter-spacing: 2px;
+    }
+
+    /* ===== AVATAR CARD ===== */
+    .avatar-card {
+      background: rgba(8,8,8,0.95);
+      border: 2px solid #00eaff;
+      border-radius: 22px;
+      padding: 35px 30px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow:
+        0 0 20px rgba(0,234,255,0.35),
+        0 0 50px rgba(0,234,255,0.12);
+    }
+
+    .avatar-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(0,234,255,0.1);
+      border: 3px solid #00eaff;
+      box-shadow: 0 0 20px rgba(0,234,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .avatar-circle .material-symbols-outlined {
+      font-size: 48px;
+      color: #00eaff;
+    }
+
+    .avatar-info h2 {
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .avatar-info p {
+      font-size: 15px;
+      color: #aaa;
+    }
+
+    /* ===== INFO CARD ===== */
+    .info-card {
+      background: rgba(8,8,8,0.95);
+      border: 2px solid #00eaff;
+      border-radius: 22px;
+      padding: 35px 30px;
+      box-shadow:
+        0 0 20px rgba(0,234,255,0.35),
+        0 0 50px rgba(0,234,255,0.12);
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      color: #00eaff;
+      text-shadow: 0 0 8px #00eaff;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0,234,255,0.2);
+      letter-spacing: 1px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .info-item {
+      background: #0d0d0d;
+      border: 1px solid rgba(0,234,255,0.25);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .info-item:hover {
+      border-color: #00eaff;
+      box-shadow: 0 0 14px rgba(0,234,255,0.2);
+    }
+
+    .info-item .material-symbols-outlined {
+      font-size: 24px;
+      color: #00eaff;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .info-text label {
+      display: block;
+      font-size: 12px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .info-text span {
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ===== ACTION BUTTONS ===== */
+    .action-card {
+      background: rgba(8,8,8,0.95);
+      border: 2px solid #00eaff;
+      border-radius: 22px;
+      padding: 30px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow:
+        0 0 20px rgba(0,234,255,0.35),
+        0 0 50px rgba(0,234,255,0.12);
+    }
+
+    .btn {
+      padding: 13px 32px;
+      border: 2px solid #00eaff;
+      color: #00eaff;
+      text-decoration: none;
+      border-radius: 30px;
+      box-shadow: 0 0 10px #00eaff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+      font-size: 15px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: #00eaff;
+      color: #000;
+      box-shadow: 0 0 25px #00eaff;
+    }
+
+    .btn.logout {
+      border-color: #ff0033;
+      color: #ff0033;
+      box-shadow: 0 0 12px #ff0033;
+    }
+
+    .btn.logout:hover {
+      background: #ff0033;
+      color: #fff;
+      box-shadow: 0 0 30px #ff0033;
+    }
+
+    .btn .material-symbols-outlined {
+      font-size: 20px;
+    }
+
+    /* ===== NOT LOGGED IN ===== */
+    .not-logged-in {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .not-logged-in p {
+      color: #aaa;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .navbar { padding: 16px 20px; }
+      .search-box { display: none; }
+      .nav-label { display: none; }
+      .right-nav a { margin-left: 10px; }
+      .right-nav a .material-symbols-outlined { font-size: 26px; }
+
+      .avatar-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .account-title { font-size: 30px; }
+      .action-card { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="left-nav">
+      <h1 class="logo">AK</h1>
+      <div class="search-box">
+        <input type="text" placeholder="Search games...">
+      </div>
+    </div>
+
+    <nav class="right-nav">
+      <a href="account.html" id="nav-login-link" class="active-nav">
+        <span class="material-symbols-outlined" id="nav-auth-icon">account_box</span>
+        <span class="nav-label" id="nav-auth-label">Account</span>
+      </a>
+      <a href="favourites.html">
+        <span class="material-symbols-outlined">star_shine</span>
+        <span class="nav-label">Favourites</span>
+      </a>
+      <a href="downloads.html">
+        <span class="material-symbols-outlined">download_2</span>
+        <span class="nav-label">Downloads</span>
+      </a>
+      <a href="support.html">
+        <span class="material-symbols-outlined">support</span>
+        <span class="nav-label">Support</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== ACCOUNT SECTION ===== -->
+  <section class="account-page">
+    <div class="account-wrapper" id="account-content">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <script>
+    // ===== LOAD ACCOUNT =====
+    function loadAccount() {
+      const user    = JSON.parse(localStorage.getItem('ak_user'));
+      const wrapper = document.getElementById('account-content');
+
+      if (!user) {
+        wrapper.innerHTML = `
+          <div class="not-logged-in">
+            <p>You are not logged in.</p>
+            <a href="login.html" class="btn">
+              <span class="material-symbols-outlined">login</span>
+              Go to Login
+            </a>
+          </div>`;
+        return;
+      }
+
+      wrapper.innerHTML = `
+        <h1 class="account-title">My Account</h1>
+
+        <!-- Avatar Card -->
+        <div class="avatar-card">
+          <div class="avatar-circle">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+          <div class="avatar-info">
+            <h2>${user.firstName} ${user.lastName}</h2>
+            <p>${user.email}</p>
+          </div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="info-card">
+          <h3>Account Information</h3>
+          <div class="info-grid">
+
+            <div class="info-item">
+              <span class="material-symbols-outlined">person</span>
+              <div class="info-text">
+                <label>Full Name</label>
+                <span>${user.firstName} ${user.lastName}</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="material-symbols-outlined">mail</span>
+              <div class="info-text">
+                <label>Email Address</label>
+                <span>${user.email}</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="material-symbols-outlined">phone</span>
+              <div class="info-text">
+                <label>Phone Number</label>
+                <span>${user.phone}</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <span class="material-symbols-outlined">public</span>
+              <div class="info-text">
+                <label>Country</label>
+                <span>${user.country}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-card">
+          <a href="index.html" class="btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Back to Home
+          </a>
+          <button class="btn logout" onclick="handleLogout()">
+            <span class="material-symbols-outlined">logout</span>
+            Logout
+          </button>
+        </div>
+      `;
+    }
+
+    // ===== LOGOUT =====
+    function handleLogout() {
+      localStorage.removeItem('ak_user');
+      window.location.href = 'index.html';
+    }
+
+    loadAccount();
+  </script>
+
+</body>
+</html>

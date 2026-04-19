@@ -1,0 +1,282 @@
+/* game.css — shared with index.css rules, used by spiderman.html and new-releases.html */
+
+/* ===== BASE ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#000;
+  color:#fff;
+  margin:0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  padding: 60px 40px;
+}
+
+/* ===== HEADINGS ===== */
+h2.neon {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 30px;
+  color: #00eaff;
+  text-shadow:
+    0 0 10px #00eaff,
+    0 0 20px #00eaff,
+    0 0 40px rgba(0, 234, 255, 0.8);
+}
+
+/* ===== CARDS GRID ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #0f0f0f;
+  border: 2px solid #00eaff;
+  border-radius: 14px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 0 18px rgba(0, 234, 255, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 55%, rgba(0,0,0,0.85));
+}
+
+.card span {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  z-index: 2;
+  text-shadow: 0 0 8px #000;
+}
+
+.card:hover img { transform: scale(1.08); }
+
+.card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 35px rgba(0, 234, 255, 0.9);
+}
+
+/* ===== MORE BUTTON ===== */
+.more-btn {
+  display: block;
+  width: fit-content;
+  margin: 35px auto 0;
+  padding: 14px 38px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #00eaff;
+  border: 2px solid #00eaff;
+  border-radius: 40px;
+  background: rgba(0, 234, 255, 0.08);
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 0 10px rgba(0,234,255,0.6),
+    0 0 25px rgba(0,234,255,0.8),
+    inset 0 0 15px rgba(0,234,255,0.4);
+  transition: 0.3s ease;
+}
+
+.more-btn:hover {
+  color: #000;
+  background: #00eaff;
+  box-shadow: 0 0 20px #00eaff, 0 0 50px #00eaff, 0 0 90px rgba(0,234,255,1);
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: #0a0a0a;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   RESPONSIVE — TABLET (max 1100px)
+   ============================================= */
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE (max 768px)
+   ============================================= */
+@media (max-width: 768px) {
+  body { padding: 30px 16px; }
+
+  h2.neon { font-size: 24px; }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — SMALL PHONES (max 400px)
+   ============================================= */
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== SPIDERMAN / MORE GAMES PAGE FIX ===== */
+body.more-page{
+  background:#000;
+  color:#fff;
+  padding:20px 12px 40px;
+}
+
+body.more-page h2{
+  text-align:center;
+  font-size:32px;
+  margin:10px 0 30px;
+  color:#00eaff;
+  text-shadow:0 0 10px #00eaff, 0 0 25px rgba(0,234,255,0.7);
+}
+
+body.more-page .cards{
+  display:grid;
+  grid-template-columns:repeat(3, 240px);
+  gap:24px;
+  justify-content:center;
+  margin:0 auto 30px;
+}
+
+body.more-page .card{
+  width:240px;
+  height:270px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid #00eaff;
+  border-radius:16px;
+  background:#0a0a0a;
+  box-shadow:0 0 18px rgba(0,234,255,0.45);
+  text-decoration:none;
+  color:#fff;
+}
+
+body.more-page .card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+body.more-page .card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.08));
+  pointer-events:none;
+}
+
+body.more-page .card span{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  z-index:2;
+  line-height:1.2;
+  text-shadow:0 0 8px #000;
+}
+
+body.more-page .card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 28px rgba(0,234,255,0.9);
+  transition:0.3s ease;
+}
+
+body.more-page .more-btn{
+  display:block;
+  width:fit-content;
+  margin:10px auto 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+  body.more-page{
+    padding:16px 10px 30px;
+  }
+
+  body.more-page h2{
+    font-size:24px;
+    margin:8px 0 20px;
+  }
+
+  body.more-page .cards{
+    grid-template-columns:1fr;
+    max-width:260px;
+    gap:18px;
+  }
+
+  body.more-page .card{
+    width:260px;
+    height:285px;
+    margin:0 auto;
+  }
+
+  body.more-page .card img{
+    height:210px;
+  }
+
+  body.more-page .card span{
+    font-size:15px;
+  }
+}

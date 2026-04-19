@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AK Games - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #000;
+      border-bottom: 1px solid #0ff;
+    }
+
+    .left-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: 2px solid #00eaff;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 25px;
+      outline: none;
+      width: 180px;
+      box-shadow: 0 0 10px rgba(0,234,255,0.6);
+      transition: width 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .search-box input::placeholder { color: #aaa; }
+    .search-box input:focus {
+      width: 240px;
+      box-shadow: 0 0 20px rgba(0,234,255,1);
+    }
+
+    .right-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .right-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 14px;
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 15px;
+    }
+
+    .right-nav a:hover { color: #00eaff; }
+
+    .right-nav a .material-symbols-outlined {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-label {
+      display: inline;
+    }
+
+    /* ===== LOGIN PAGE ===== */
+    .login-page {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(10,10,10,0.9);
+      border: 2px solid #00eaff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow:
+        0 0 20px rgba(0,234,255,0.5),
+        0 0 40px rgba(0,234,255,0.2);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      font-size: 32px;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+      margin-bottom: 25px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .login-form input {
+      width: 85%;
+      padding: 12px 14px;
+      background: #111;
+      border: 2px solid #00eaff;
+      border-radius: 12px;
+      outline: none;
+      color: #fff;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0,234,255,0.25);
+      margin: 0 auto;
+      display: block;
+    }
+
+    .login-form input::placeholder { color: #aaa; }
+    .login-form input:focus { box-shadow: 0 0 18px rgba(0,234,255,0.6); }
+
+    .error-msg {
+      color: #ff0033;
+      font-size: 14px;
+      text-shadow: 0 0 8px #ff0033;
+      display: none;
+      margin-top: -8px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border: 2px solid #00eaff;
+      color: #00eaff;
+      text-decoration: none;
+      border-radius: 30px;
+      box-shadow: 0 0 10px #00eaff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #00eaff;
+      color: #000;
+      box-shadow: 0 0 25px #00eaff;
+    }
+
+    .btn.primary {
+      border-color: #ff0033;
+      color: #ff0033;
+      box-shadow: 0 0 12px #ff0033;
+    }
+
+    .btn.primary:hover {
+      background: #ff0033;
+      color: #fff;
+      box-shadow: 0 0 30px #ff0033;
+    }
+
+    .login-text { margin-top: 20px; color: #ccc; }
+    .login-text a { color: #00eaff; text-decoration: none; }
+    .login-text a:hover { text-shadow: 0 0 10px #00eaff; }
+
+    .more-btn {
+      display: block;
+      width: fit-content;
+      margin: 20px auto 0;
+      padding: 14px 38px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #00eaff;
+      border: 2px solid #00eaff;
+      border-radius: 40px;
+      background: rgba(0,234,255,0.08);
+      box-shadow:
+        0 0 10px rgba(0,234,255,0.6),
+        0 0 25px rgba(0,234,255,0.8),
+        inset 0 0 15px rgba(0,234,255,0.4);
+      transition: 0.3s ease;
+    }
+
+    .more-btn:hover {
+      color: #000;
+      background: #00eaff;
+      box-shadow: 0 0 20px #00eaff, 0 0 50px #00eaff;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .navbar { padding: 16px 20px; }
+      .search-box { display: none; }
+      .nav-label { display: none; }
+      .right-nav a { margin-left: 10px; }
+      .right-nav a .material-symbols-outlined { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="left-nav">
+      <h1 class="logo">AK</h1>
+      <div class="search-box">
+        <input type="text" placeholder="Search games...">
+      </div>
+    </div>
+
+    <nav class="right-nav">
+      <!-- Login/Account toggled by JS -->
+      <a href="login.html" id="nav-login-link">
+        <span class="material-symbols-outlined" id="nav-auth-icon">login</span>
+        <span class="nav-label" id="nav-auth-label">Login</span>
+      </a>
+      <a href="favourites.html">
+        <span class="material-symbols-outlined">star_shine</span>
+        <span class="nav-label">Favourites</span>
+      </a>
+      <a href="downloads.html">
+        <span class="material-symbols-outlined">download_2</span>
+        <span class="nav-label">Downloads</span>
+      </a>
+      <a href="support.html">
+        <span class="material-symbols-outlined">support</span>
+        <span class="nav-label">Support</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== LOGIN SECTION ===== -->
+  <section class="login-page">
+    <div class="login-box">
+      <h2>Login</h2>
+
+      <div class="login-form">
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+        <p class="error-msg" id="login-error">Invalid email or password.</p>
+        <button class="btn primary" onclick="handleLogin()">Login</button>
+      </div>
+
+      <p class="login-text">
+        Don't have an account?
+        <a href="signup.html">Sign Up</a>
+      </p>
+
+      <a href="index.html" class="more-btn">← Back to Home</a>
+    </div>
+  </section>
+
+  <script>
+    // ===== AUTH STATE: update navbar =====
+    function updateNavAuth() {
+      const user = JSON.parse(localStorage.getItem('ak_user'));
+      const icon  = document.getElementById('nav-auth-icon');
+      const label = document.getElementById('nav-auth-label');
+      const link  = document.getElementById('nav-login-link');
+
+      if (user) {
+        icon.textContent  = 'account_box';
+        label.textContent = 'Account';
+        link.href         = 'account.html';
+      } else {
+        icon.textContent  = 'login';
+        label.textContent = 'Login';
+        link.href         = 'login.html';
+      }
+    }
+
+    // ===== HANDLE LOGIN =====
+    function handleLogin() {
+      const email    = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const errorEl  = document.getElementById('login-error');
+
+      errorEl.style.display = 'none';
+
+      if (!email || !password) {
+        errorEl.textContent    = 'Please fill in all fields.';
+        errorEl.style.display  = 'block';
+        return;
+      }
+
+      // Check against stored users
+      const users = JSON.parse(localStorage.getItem('ak_users') || '[]');
+      const match = users.find(u => u.email === email && u.password === password);
+
+      if (match) {
+        localStorage.setItem('ak_user', JSON.stringify(match));
+        window.location.href = 'index.html';
+      } else {
+        errorEl.textContent   = 'Invalid email or password.';
+        errorEl.style.display = 'block';
+      }
+    }
+
+    // Allow Enter key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+
+    updateNavAuth();
+  </script>
+
+</body>
+</html>

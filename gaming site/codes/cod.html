@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call of Duty</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="left-nav">
+    <h1 class="logo">AK</h1>
+  </div>
+
+  <nav class="right-nav">
+    <a href="index.html">Home</a>
+    <a href="favourites.html">Favourites</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+
+<section class="game-detail-page">
+  <div class="game-detail-box">
+
+    <div class="game-detail-image">
+      <img src="../images/cod.jpeg" alt="Call of Duty">
+    </div>
+
+    <div class="game-detail-content">
+      <h2>About the Game</h2>
+      <p>
+        Call of Duty is one of the most popular first-person shooter franchises in gaming.
+        It delivers fast-paced combat, military missions, realistic weapons, and intense
+        action across story campaigns and multiplayer battles.
+      </p>
+
+      <p>
+        Players can experience cinematic missions, strategic gunplay, team battles, and
+        highly detailed environments that make every moment feel dynamic and exciting.
+      </p>
+
+      <div class="game-meta">
+        <div class="meta-card">
+          <h3>Genre</h3>
+          <p>FPS / Action</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Mode</h3>
+          <p>Single Player / Multiplayer</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Platform</h3>
+          <p>PC / Console</p>
+        </div>
+      </div>
+
+      <div class="game-action-buttons">
+        <button class="btn" onclick="addToFavourites('Call of Duty', '../images/cod.jpeg', 'cod.html')">
+          Add to Favourites
+        </button>
+
+        <button class="btn primary" onclick="addToDownloads('Call of Duty', '../images/cod.jpeg', 'cod.html')">
+          Download
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

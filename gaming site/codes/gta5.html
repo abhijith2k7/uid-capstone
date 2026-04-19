@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA V</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="left-nav">
+    <h1 class="logo">AK</h1>
+  </div>
+
+  <nav class="right-nav">
+    <a href="index.html">Home</a>
+    <a href="favourites.html">Favourites</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+
+<section class="detail-hero">
+  <div class="detail-overlay"></div>
+  <div class="detail-hero-content">
+    <h1>Grand Theft Auto V</h1>
+    <p>Action, freedom, missions, and chaos in one massive open world.</p>
+  </div>
+</section>
+
+<section class="game-detail-page">
+  <div class="game-detail-box">
+
+    <div class="game-detail-image">
+      <img src="../images/GTAV.jpg" alt="GTA V">
+    </div>
+
+    <div class="game-detail-content">
+      <h2>About the Game</h2>
+      <p>
+        Grand Theft Auto V is one of the most iconic open-world action games ever made.
+        Set in Los Santos, it offers a huge map, fast-paced missions, driving, heists,
+        gunfights, and a world full of detail and freedom.
+      </p>
+
+      <p>
+        Players can explore the city, switch between characters, complete story missions,
+        enjoy side activities, and experience a realistic open world with amazing visuals.
+      </p>
+
+      <div class="game-meta">
+        <div class="meta-card">
+          <h3>Genre</h3>
+          <p>Open World / Action</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Mode</h3>
+          <p>Single Player / Online</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Platform</h3>
+          <p>PC / Console</p>
+        </div>
+      </div>
+
+      <div class="game-action-buttons">
+        <button class="btn" onclick="addToFavourites('GTA V', '../images/GTAV.jpg', 'gta5.html')">
+          Add to Favourites
+        </button>
+
+        <button class="btn primary" onclick="addToDownloads('GTA V', '../images/GTAV.jpg', 'gta5.html')">
+          Download
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

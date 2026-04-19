@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miles Morales</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="detail-page">
+
+<header class="navbar">
+  <div class="left-nav">
+    <h1 class="logo">AK</h1>
+  </div>
+
+  <nav class="right-nav">
+    <a href="index.html">Home</a>
+    <a href="favourites.html">Favourites</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+
+<section class="section game-detail-page">
+  <div class="game-detail-box">
+
+    <div class="game-detail-image">
+      <img src="../images/miles morales.jpeg" alt="Miles Morales">
+    </div>
+
+    <div class="game-detail-content">
+      <h2>About the Game</h2>
+
+      <p>
+        Marvel’s Spider-Man: Miles Morales is an action-adventure game where you step into the role of Miles as he protects New York with his own unique powers and style.
+      </p>
+
+      <p>
+        The game features fast-paced combat, web-swinging across a snowy city, emotional storytelling, and stylish next-generation visuals that make every mission exciting.
+      </p>
+
+      <div class="game-meta">
+        <div class="meta-card">
+          <h3>Genre</h3>
+          <p>Action / Adventure</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Mode</h3>
+          <p>Single Player</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Platform</h3>
+          <p>PC / Console</p>
+        </div>
+      </div>
+
+      <div class="game-action-buttons">
+        <button class="btn" onclick="addToFavourites('Miles Morales','../images/miles morales.jpeg','milesmorales.html')">
+          Add to Favourites
+        </button>
+
+        <button class="btn primary" onclick="addToDownloads('Miles Morales','../images/miles morales.jpeg','milesmorales.html')">
+          Download
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

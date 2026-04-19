@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Downloads</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<h2 class="neon center">Your Downloads</h2>
+
+<div id="downloadContainer" class="cards"></div>
+
+<a href="index.html" class="more-btn">← Back to Home</a>
+
+<script>
+let downloads = JSON.parse(localStorage.getItem("downloads")) || [];
+
+let container = document.getElementById("downloadContainer");
+
+if(downloads.length === 0){
+  container.innerHTML = "<p style='text-align:center;color:#aaa;'>No downloads yet</p>";
+}
+
+downloads.forEach(game => {
+  container.innerHTML += `
+    <a href="${game.page}" class="card">
+      <img src="${game.image}">
+      <span>${game.name}</span>
+    </a>
+  `;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Cause</title>
+<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="left-nav">
+    <h1 class="logo">AK</h1>
+  </div>
+
+  <nav class="right-nav">
+    <a href="index.html">Home</a>
+    <a href="favourites.html">Favourites</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+
+<section class="section game-detail-page">
+  
+  <div class="game-detail-box">
+
+    <!-- IMAGE -->
+    <div class="game-detail-image">
+      <img src="../images/justcause.jpg" alt="Just Cause">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="game-detail-content">
+      <h2>About the Game</h2>
+
+      <p>
+        Just Cause is an open-world action game focused on chaos, explosions,
+        and total freedom. Play as Rico Rodriguez and take down enemy bases
+        using weapons, vehicles, and insane stunts.
+      </p>
+
+      <p>
+        The game features grappling hook mechanics, parachutes, wingsuits,
+        and massive destruction environments where you can create your own action scenes.
+      </p>
+
+      <!-- INFO BOXES -->
+      <div class="game-meta">
+
+        <div class="meta-card">
+          <h3>Genre</h3>
+          <p>Open World / Action</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Mode</h3>
+          <p>Single Player</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Platform</h3>
+          <p>PC / Console</p>
+        </div>
+
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="game-action-buttons">
+
+        <button class="btn"
+        onclick="addToFavourites('Just Cause','../images/justcause.jpg','justcause.html')">
+        Add to Favourites
+        </button>
+
+        <button class="btn primary"
+        onclick="addToDownloads('Just Cause','../images/justcause.jpg','justcause.html')">
+        Download
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

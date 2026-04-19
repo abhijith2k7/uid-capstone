@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Into the Spider-Verse</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="detail-page">
+
+<header class="navbar">
+  <div class="left-nav">
+    <h1 class="logo">AK</h1>
+  </div>
+
+  <nav class="right-nav">
+    <a href="index.html">Home</a>
+    <a href="favourites.html">Favourites</a>
+    <a href="downloads.html">Downloads</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+
+
+<section class="game-detail-page">
+  <div class="game-detail-box">
+
+    <div class="game-detail-image">
+      <img src="../images/spiderverse1.jpeg" alt="Into the Spider-Verse">
+    </div>
+
+    <div class="game-detail-content">
+      <h2>About the Game</h2>
+      <p>
+        Into the Spider-Verse follows Miles Morales as he discovers his powers and enters a larger multiverse filled with different Spider-People from alternate worlds.
+      </p>
+
+      <p>
+        With unique visual style, emotional storytelling, and fast-paced superhero action, the experience feels fresh, exciting, and full of energy from start to finish.
+      </p>
+
+      <div class="game-meta">
+        <div class="meta-card">
+          <h3>Genre</h3>
+          <p>Action / Adventure</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Mode</h3>
+          <p>Single Player</p>
+        </div>
+
+        <div class="meta-card">
+          <h3>Platform</h3>
+          <p>PC / Console</p>
+        </div>
+      </div>
+
+      <div class="game-action-buttons">
+        <button class="btn" onclick="addToFavourites('Into the Spider-Verse', '../images/spiderverse1.jpg', 'intospiderverse.html')">
+          Add to Favourites
+        </button>
+
+        <button class="btn primary" onclick="addToDownloads('Into the Spider-Verse', '../images/spiderverse1.jpg', 'intospiderverse.html')">
+          Download
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="index.html" class="more-btn">← Back to Home</a>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
